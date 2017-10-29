@@ -7,12 +7,13 @@ require "jekyll-compose/file_info"
 
 module Jekyll
   module Compose
-    DEFAULT_TYPE = "md".freeze
+    DEFAULT_TYPE = "markdown".freeze
     DEFAULT_LAYOUT = "post".freeze
     DEFAULT_LAYOUT_PAGE = "page".freeze
   end
 end
 
-%w{draft post publish unpublish page}.each do |file|
+# %w{draft post publish unpublish page story}.each do |file|
+%w{cooking page story}.each do |file|
   require File.expand_path("jekyll/commands/#{file}.rb", __dir__)
 end

@@ -11,6 +11,7 @@ module Jekyll
       def create!
         validate_should_write!
         ensure_directory_exists
+        ensure_images_directory_exists
         write_file
       end
 
@@ -21,8 +22,20 @@ module Jekyll
       end
 
       def ensure_directory_exists
-        dir = File.dirname file_path
-        Dir.mkdir(dir) unless Dir.exist?(dir)
+        dir = File.dirname(file_path)
+        unless Dir.exist?(dir)
+          Dir.mkdir(dir)
+          puts "New folder created at #{dir}"
+        end
+      end
+
+      def ensure_images_directory_exists
+        dir_path = file.image_folder
+
+        if dir_path && !Dir.exist?(dir_path)
+          Dir.mkdir(dir_path)
+          puts "New images folder created at #{dir_path}"
+        end
       end
 
       def write_file
@@ -30,7 +43,7 @@ module Jekyll
           f.puts(file.content)
         end
 
-        puts "New #{file.resource_type} created at #{file_path}."
+        puts "New #{file.resource_type} created at #{file_path}"
       end
 
       def file_path
