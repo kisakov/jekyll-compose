@@ -53,11 +53,11 @@ module Jekyll
 
       class CookingFileInfo < Compose::FileInfo
         def resource_type
-          'story'
+          'cooking'
         end
 
         def path
-          "_posts/stories/#{file_name}"
+          "_posts/cooking/#{file_name}"
         end
 
         def image_folder
