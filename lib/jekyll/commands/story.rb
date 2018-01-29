@@ -29,6 +29,7 @@ module Jekyll
           "date" => params.date.strftime("%Y-%m-%d %T %z"),
           "original-date" => params.date.strftime("%Y-%m-%d"),
           "comments" => true,
+          "tags" => "SanFrancisco",
           "thumbnail" => nil,
           "images" => nil
         }
